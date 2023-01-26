@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>sb-jpa-tdd-bdd-h2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>sb-tdd</name>
+	<name>sb-jpa-tdd-bdd-h2</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>19</java.version>
