@@ -10,6 +10,8 @@ Docker:
 docker build -t cloudmahesh/sb-jpa-tdd-bdd-h2:tag1 .
 docker push cloudmahesh/sb-jpa-tdd-bdd-h2:tag1
 
+docker rmi -f $(docker images -q)
+
 Minikube:
 ---------
 minikube start

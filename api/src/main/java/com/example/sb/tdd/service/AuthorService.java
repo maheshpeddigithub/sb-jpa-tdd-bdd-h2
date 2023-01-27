@@ -2,7 +2,6 @@ package com.example.sb.tdd.service;
 
 import com.example.sb.tdd.model.Author;
 import com.example.sb.tdd.repository.AuthorRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.Optional;
 @Service
 public class AuthorService {
 
-    @Autowired
     private AuthorRepository repository;
+
+    public AuthorService(AuthorRepository repository) {
+        this.repository = repository;
+    }
 
     public List<Author> getAuthors() {
         return repository.findAll();

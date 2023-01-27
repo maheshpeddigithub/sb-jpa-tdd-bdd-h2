@@ -2,7 +2,6 @@ package com.example.sb.tdd.controller;
 
 import com.example.sb.tdd.model.Author;
 import com.example.sb.tdd.service.AuthorService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,8 +19,11 @@ import java.util.List;
 @RequestMapping("api/author")
 public class AuthorController {
 
-    @Autowired
     private AuthorService service;
+
+    public AuthorController(AuthorService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public ResponseEntity<List<Author>> getAuthors() {
