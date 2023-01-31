@@ -5,6 +5,6 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/com/example/sb/bdd")
+@CucumberOptions(features = "src/test/resources")
 public class TestRunner {
 }
