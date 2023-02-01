@@ -44,30 +44,30 @@ public class Steps {
         response = given().header("Content-Type", "application/json").get(BASE_URL);
     }
 
-    @Then("author details are retrieved")
-    public void authorDetailsAreRetrieved() throws JsonProcessingException {
-        assertEquals(200, response.statusCode());
+    @Then("^author details with name \"(.*)\" with response code \"(.*)\" are returned$")
+    public void authorDetailsAreRetrieved(String name, int code) throws JsonProcessingException {
+        assertEquals(code, response.statusCode());
         List<Author> authors = (new ObjectMapper()).readValue(response.getBody().asString(), new TypeReference<List<Author>>(){});
         author = authors.stream().findFirst().orElse(null);
-        assertEquals("n1", author.getName());
+        assertEquals(name, author.getName());
     }
 
     @Given("update author details request received")
     public void updateAuthorDetailsRequestReceived() {
     }
 
-    @When("I place request for update author details")
-    public void iPlaceRequestForUpdateAuthorDetails() throws JsonProcessingException {
-        response = given().header("Content-Type", "application/json").body((new ObjectMapper()).writeValueAsString(Author.builder().name("n11").build())).patch(BASE_URL + "/" + author.getId());
+    @When("^I place request to update author name to \"(.*)\"$")
+    public void iPlaceRequestForUpdateAuthorDetails(String name) throws JsonProcessingException {
+        response = given().header("Content-Type", "application/json").body((new ObjectMapper()).writeValueAsString(Author.builder().name(name).build())).patch(BASE_URL + "/" + author.getId());
     }
 
-    @Then("author details are updated")
-    public void authorDetailsAreUpdated() throws JsonProcessingException {
-        assertEquals(202, response.statusCode());
+    @Then("^author name updated to \"(.*)\" and response code \"(.*)\"$")
+    public void authorDetailsAreUpdated(String name, int code) throws JsonProcessingException {
+        assertEquals(code, response.statusCode());
         response = given().header("Content-Type", "application/json").get(BASE_URL + "/" + author.getId());
         assertEquals(200, response.statusCode());
         Author author = (new ObjectMapper()).readValue(response.getBody().asString(), Author.class);
-        assertEquals("n11", author.getName());
+        assertEquals(name, author.getName());
     }
 
     @Given("delete author request received")
@@ -79,9 +79,9 @@ public class Steps {
         response = given().header("Content-Type", "application/json").delete(BASE_URL + "/" + author.getId());
     }
 
-    @Then("author is deleted")
-    public void authorIsDeleted() {
-        assertEquals(202, response.statusCode());
+    @Then("^author is deleted and status code \"(.*)\" returned$")
+    public void authorIsDeleted(int code) {
+        assertEquals(code, response.statusCode());
     }
 
 }
