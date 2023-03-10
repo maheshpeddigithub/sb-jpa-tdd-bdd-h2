@@ -19,7 +19,7 @@ Feature: BDDs for sb-jpa-tdd-bdd-h2
     Then author name updated to "<name>" and response code "<code>"
     Examples:
       | name | code |
-      | n11  | 202  |
+      | n11  | 200  |
 
   Scenario Outline: Delete Author
     Given delete author request received
@@ -27,4 +27,4 @@ Feature: BDDs for sb-jpa-tdd-bdd-h2
     Then author is deleted and status code "<code>" returned
     Examples:
       | code |
-      | 202  |
+      | 204  |

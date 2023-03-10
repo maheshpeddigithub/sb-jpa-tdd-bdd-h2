@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c5a380d4-43ad-4095-99ba-99d8059c29e4",
+		"_postman_id": "8a124cf3-39a9-495f-b748-020ecdcecfa5",
 		"name": "sb-jpa-tdd-bdd-h2",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -58,7 +58,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/api/author/2",
+					"raw": "localhost:8080/api/author/1",
 					"host": [
 						"localhost"
 					],
@@ -66,20 +66,20 @@
 					"path": [
 						"api",
 						"author",
-						"2"
+						"1"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "updateAuthor",
+			"name": "updateAuthorName",
 			"request": {
 				"method": "PATCH",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\": \"n22\"\n}",
+					"raw": "{\n    \"name\": \"n11\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -87,7 +87,7 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:8080/api/author/2",
+					"raw": "localhost:8080/api/author/1/name",
 					"host": [
 						"localhost"
 					],
@@ -95,7 +95,8 @@
 					"path": [
 						"api",
 						"author",
-						"2"
+						"1",
+						"name"
 					]
 				}
 			},

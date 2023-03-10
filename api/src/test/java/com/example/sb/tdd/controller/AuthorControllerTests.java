@@ -71,13 +71,13 @@ public class AuthorControllerTests {
     }
 
     @Test
-    public void testUpdateAuthor() throws Exception {
+    public void testUpdateAuthorName() throws Exception {
         when(service.updateAuthor(anyInt(), any(Author.class))).thenReturn(Author.builder().id(1).name("n1").build());
 
-        mockMvc.perform(patch("/api/author/1")
+        mockMvc.perform(patch("/api/author/1/name")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content((new ObjectMapper()).writeValueAsString(Author.builder().id(1).name("n1").build())))
-                .andExpect(status().isAccepted())
+                .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", equalTo("n1")));
     }
 
@@ -86,7 +86,7 @@ public class AuthorControllerTests {
         doNothing().when(service).deleteAuthor(anyInt());
 
         mockMvc.perform(delete("/api/author/1"))
-                .andExpect(status().isAccepted());
+                .andExpect(status().isNoContent());
     }
 
 }

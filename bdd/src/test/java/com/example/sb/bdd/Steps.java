@@ -58,7 +58,7 @@ public class Steps {
 
     @When("^I place request to update author name to \"(.*)\"$")
     public void iPlaceRequestForUpdateAuthorDetails(String name) throws JsonProcessingException {
-        response = given().header("Content-Type", "application/json").body((new ObjectMapper()).writeValueAsString(Author.builder().name(name).build())).patch(BASE_URL + "/" + author.getId());
+        response = given().header("Content-Type", "application/json").body((new ObjectMapper()).writeValueAsString(Author.builder().name(name).build())).patch(BASE_URL + "/" + author.getId() + "/name");
     }
 
     @Then("^author name updated to \"(.*)\" and response code \"(.*)\"$")
